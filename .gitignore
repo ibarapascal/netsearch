@@ -1,0 +1,44 @@
+# OSやエディタから生成される一時ファイル
+*~
+*#
+*.bak
+*.tmproj
+.buildpath
+.project
+.settings
+.idea
+.tmp
+.netbeans
+nbproject
+
+# OSの不可視ファイルとして生成されるファイル
+Thumbs.db
+desktop.ini
+.DS_Store
+.DS_STORE
+
+# Node.jsによって生成されるファイル
+dist
+build
+node_modules
+npm-debug.log
+yarn-error.log
+
+# バンドラーによって生成されるファイル
+.cache
+.next
+
+# dotenvの設定ファイル
+.envrc
+
+# ビジュアルリグレッション関連に必要なファイル
+.reg
+.snapshots
+.catalogs
+
+# ログ
+logs/*
+
+# lintのキャッシュファイル
+.eslintcache
+.stylelintcache

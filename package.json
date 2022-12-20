@@ -1,0 +1,72 @@
+{
+  "name": "netsearch",
+  "description": "Search github content with debounce & throttle",
+  "version": "0.0.1",
+  "bugs": {
+    "url": "https://github.com/ibarapascal/netsearch/issues"
+  },
+  "dependencies": {
+    "classnames": "^2.3.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^6.2.1"
+  },
+  "devDependencies": {
+    "@g123jp/eslint-config-react": "^1.1.3",
+    "@g123jp/prettier-config-recommended": "^1.2.2",
+    "@g123jp/stylelint-config-recommended": "^0.0.2",
+    "@types/node": "^17.0.16",
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.11.0",
+    "@typescript-eslint/parser": "^5.11.0",
+    "@vitejs/plugin-react-refresh": "^1.3.6",
+    "eslint": "^8.8.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-import-helpers": "^1.2.1",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.28.0",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "postcss": "^8.4.6",
+    "postcss-scss": "^4.0.3",
+    "prettier": "^2.5.1",
+    "sass": "^1.49.7",
+    "stylelint": "^14.3.0",
+    "stylelint-config-idiomatic-order": "^8.1.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-recommended": "^6.0.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-prettier": "^2.0.0",
+    "stylelint-scss": "^4.1.0",
+    "typescript": "^4.5.5",
+    "vite": "^2.7.13"
+  },
+  "homepage": "https://github.com/ibarapascal/netsearch#readme",
+  "keywords": [
+    "react",
+    "template",
+    "typescript",
+    "vite"
+  ],
+  "main": "src/index.tsx",
+  "prettier": "@g123jp/prettier-config-recommended",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibarapascal/netsearch.git"
+  },
+  "scripts": {
+    "arkit:components": "npx arkit -d src -e \"src/typings,src/recoil,src/services,src/hooks,src/configs,src/constants.ts\" -o ./docs-components.png",
+    "build": "vite build --mode ${RUN_ENV-production}",
+    "dev": "vite --host",
+    "fix": "yarn fix:ts && yarn fix:css",
+    "fix:css": "stylelint --fix \"./src/**/*.scss\"",
+    "fix:ts": "eslint --fix \"./**/*.ts\" \"./**/*.tsx\"",
+    "fixpack": "npx fixpack",
+    "lint": "tsc --noEmit && yarn lint:ts && yarn lint:css",
+    "lint:css": "stylelint --cache \"./src/**/*.scss\"",
+    "lint:ts": "tsc --noEmit && eslint \"./**/*.ts\" \"./**/*.tsx\""
+  }
+}

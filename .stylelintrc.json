@@ -1,0 +1,5 @@
+{
+  "extends": [
+    "@g123jp/stylelint-config-recommended"
+  ]
+}
