@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import { Sample } from './_sample';
@@ -22,4 +22,5 @@ function App(): JSX.Element {
 document.body.style.margin = '0';
 document.documentElement.lang = 'ja';
 const rootElement = document.getElementById('root');
-ReactDOM.render(<App />, rootElement);
+const root = createRoot(rootElement!);
+root.render(<App />);
