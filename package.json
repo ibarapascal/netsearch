@@ -50,7 +50,7 @@
     "typescript": "^4.9.4",
     "vite": "^4.0.2"
   },
-  "homepage": "https://ibarapascal.github.io/netsearch",
+  "homepage": "https://ibarapascal.github.io/netsearch/",
   "keywords": [
     "react",
     "typescript",
@@ -58,6 +58,7 @@
   ],
   "main": "src/index.tsx",
   "prettier": "@g123jp/prettier-config-recommended",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ibarapascal/netsearch.git"
@@ -73,6 +74,7 @@
     "fixpack": "npx fixpack",
     "lint": "tsc --noEmit && yarn lint:ts && yarn lint:css",
     "lint:css": "stylelint --cache \"./src/**/*.scss\"",
-    "lint:ts": "tsc --noEmit && eslint \"./**/*.ts\" \"./**/*.tsx\""
+    "lint:ts": "tsc --noEmit && eslint \"./**/*.ts\" \"./**/*.tsx\"",
+    "preview": "vite preview --port 8080"
   }
 }
