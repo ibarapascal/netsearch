@@ -1,6 +1,6 @@
 {
   "name": "netsearch",
-  "description": "Search github content with debounce, throttle, and pagination",
+  "description": "The demo to search my Github content with debounce, throttle, and pagination",
   "version": "0.0.1",
   "bugs": {
     "url": "https://github.com/ibarapascal/netsearch/issues"
