@@ -34,7 +34,7 @@ export function Search(): JSX.Element {
   });
   // reason to use Ref here for pagination
   // - since we are throttling the requests, the UI status needs to keep corresponding with the data, so it's necessary to hold a backside value
-  // - we are using a rendering-controled timer, update states could make the condition more complex
+  // - we are using a rendering-controlled timer, update states could make the condition more complex
   const pageRef = useRef<number>(INIT_PAGINATION.page);
   const rowsPerPageRef = useRef<number>(INIT_PAGINATION.rowsPerPage);
 
