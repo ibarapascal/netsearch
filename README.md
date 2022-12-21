@@ -13,6 +13,10 @@ Using React, Typescript, [vite](https://github.com/vitejs/vite), SCSS with CSS M
 - If there are any changes during the throttled period, it could be auto-triggered once (no more) later.  
 - The cache policy could be customized as well.  
 
+Access from the link: 
+
+<img width="720" alt="Screen Shot 2022-12-21 at 23 53 56" src="https://user-images.githubusercontent.com/30466424/208934494-1661fa10-38d5-4c8e-8603-aa7c711c09c7.png">
+
 ## Related info
 
 About the Github REST API search code

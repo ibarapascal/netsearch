@@ -18,6 +18,7 @@
     "@g123jp/eslint-config-react": "^1.1.4",
     "@g123jp/prettier-config-recommended": "^1.2.2",
     "@g123jp/stylelint-config-recommended": "^0.0.3",
+    "@types/gh-pages": "^3.2.1",
     "@types/lodash": "^4.14.191",
     "@types/node": "^18.11.17",
     "@types/react": "^18.0.26",
@@ -34,6 +35,7 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "gh-pages": "^4.0.0",
     "postcss": "^8.4.20",
     "postcss-scss": "^4.0.6",
     "prettier": "^2.8.1",
@@ -48,7 +50,7 @@
     "typescript": "^4.9.4",
     "vite": "^4.0.2"
   },
-  "homepage": "https://github.com/ibarapascal/netsearch#readme",
+  "homepage": "https://ibarapascal.github.io/netsearch",
   "keywords": [
     "react",
     "typescript",
@@ -63,6 +65,7 @@
   "scripts": {
     "arkit:components": "npx arkit -d src -e \"src/types\" -o ./docs-components.png",
     "build": "vite build --mode ${RUN_ENV-production}",
+    "deploy": "gh-pages -d dist",
     "dev": "vite --host",
     "fix": "yarn fix:ts && yarn fix:css",
     "fix:css": "stylelint --fix \"./src/**/*.scss\"",
