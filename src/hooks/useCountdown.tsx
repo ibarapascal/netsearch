@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface UseCountdownReturn {
   // the left amount of the count
@@ -27,25 +27,18 @@ export function useCountdown({
 }: UseCountdownProps): UseCountdownReturn {
   const [time, setTime] = useState<number>(initCount);
 
-  const timer = useCallback(
-    () =>
-      setTimeout(() => {
-        if (time > 0) {
-          setTime((t) => t - 1);
-        } else {
-          onFinished && onFinished();
-        }
-      }, step),
-    [time, onFinished, step],
-  );
-
-  if (!initRunning) {
-    clearTimeout(timer());
-  }
-
   useEffect(() => {
-    initRunning && timer();
-  }, [timer, initRunning]);
+    const timer = setTimeout(() => {
+      if (time > 0) {
+        initRunning && setTime((t) => t - 1);
+      } else {
+        onFinished!();
+      }
+    }, step);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [initRunning, onFinished, step, time]);
 
   return { time };
 }

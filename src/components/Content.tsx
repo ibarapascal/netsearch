@@ -1,24 +1,51 @@
-import { GithubSearchResponse } from '@/types';
-import { message, Spin } from 'antd';
-import React from 'react';
+import { DataType, GithubSearchResponse, SearchParams } from '@/types';
+import { query } from '@/utils';
+import { message, Pagination, Spin, Table } from 'antd';
+import { ColumnsType } from 'antd/es/table';
+import classnames from 'classnames';
+import React, { HTMLAttributes } from 'react';
 import { useQuery } from 'react-query';
 
-import { ContentTable } from './ContentTable';
+import classes from './Content.module.scss';
 
-export interface ContentProps {
-  searchKeyword: string;
+enum TableColumn {
+  NAME = 'name',
+  PATH = 'path',
+  URL = 'url',
+}
+const columns: ColumnsType<DataType> = [
+  { title: 'Name', dataIndex: TableColumn.NAME },
+  { title: 'Path', dataIndex: TableColumn.PATH },
+  { title: 'URL', dataIndex: TableColumn.URL },
+].map((item) => ({
+  ...item,
+  key: item.dataIndex,
+}));
+
+export interface ContentProps extends HTMLAttributes<HTMLDivElement> {
+  params: SearchParams;
+  onChangePagination: (currentPage: number, pageSize?: number) => void;
 }
 
 // could be moved to env files
 const ENDPOINT = 'https://api.github.com/search/code';
 
-export function Content({ searchKeyword }: ContentProps): JSX.Element {
-  const queryString = encodeURIComponent(`${searchKeyword} user:ibarapascal`);
-  const url = `${ENDPOINT}?q=${queryString}`;
+export function Content({
+  params: { input: searchKeyword, page, rowsPerPage },
+  onChangePagination,
+  className,
+  ...props
+}: ContentProps): JSX.Element {
+  const params = {
+    q: `${searchKeyword} user:ibarapascal`,
+    page: page.toString(),
+    per_page: rowsPerPage.toString(),
+  };
+  const url = `${ENDPOINT}${query(params)}`;
 
   const { isLoading, error, data } = useQuery(
-    // the request key
-    searchKeyword,
+    // the request dependencies
+    [searchKeyword, page, rowsPerPage],
     (): Promise<GithubSearchResponse> =>
       fetch(url).then((res) => {
         message.success('Fetched!', 1);
@@ -34,14 +61,38 @@ export function Content({ searchKeyword }: ContentProps): JSX.Element {
       staleTime: 6000,
     },
   );
-
   if (isLoading) return <Spin />;
   if (error) return <div>An error has occurred</div>;
 
+  const totalAmount = data?.total_count ?? 0;
+  const tableData =
+    data?.items.map((item) => ({
+      ...item,
+      key: item.sha,
+      id: item.sha,
+    })) ?? [];
+
   return (
-    <>
-      {!!searchKeyword && <div>Searching: {searchKeyword}</div>}
-      <ContentTable data={data} />
-    </>
+    <div {...props} className={classnames(classes.Content, className)}>
+      {!!searchKeyword && (
+        <>
+          <div className={classes.ContentTips}>
+            <div>Searching: {searchKeyword}</div>
+            <div>Page: {page}</div>
+            <div>Page Size: {rowsPerPage}</div>
+          </div>
+          <Pagination
+            current={page}
+            defaultCurrent={1}
+            pageSize={rowsPerPage}
+            pageSizeOptions={[5, 10, 20, 50, 100]}
+            showSizeChanger
+            total={totalAmount}
+            onChange={onChangePagination}
+          />
+        </>
+      )}
+      <Table columns={columns} dataSource={tableData} pagination={false} />
+    </div>
   );
 }

@@ -1,4 +1,4 @@
-.header {
+.Header {
   display: flex;
   height: 48px;
   align-items: center;
@@ -10,6 +10,11 @@
   color: white;
 }
 
-.body {
+.Body {
   padding: 0 10em;
+}
+
+.ContentInactive {
+  opacity: 0.4;
+  pointer-events: none;
 }

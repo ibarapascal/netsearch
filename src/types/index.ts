@@ -12,3 +12,11 @@ export interface GithubSearchResponse {
     url: string;
   }>;
 }
+
+export type DataType = GithubSearchResponse['items'][number];
+
+export interface SearchParams {
+  input: string;
+  page: number;
+  rowsPerPage: number;
+}

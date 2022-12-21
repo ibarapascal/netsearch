@@ -22,7 +22,7 @@ export const Timer = forwardRef<HTMLDivElement, TimerProps>(
       onFinished,
     });
 
-    // currently hidden, could be shown as well, depends on the UX we want
+    // currently hidden, could be shown as well with some adjustments/conditions, depends on the UX we want
     return (
       <h2 ref={ref} style={{ display: 'none' }}>
         {time}
